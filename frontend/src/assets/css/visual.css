@@ -1,0 +1,42 @@
+@layer base {
+  .bg-with-before {
+    --bg-color: theme(colors.transparent);
+    @apply relative;
+  }
+
+  .bg-with-before::before {
+    @apply pointer-events-none absolute inset-0 -z-10 
+    bg-[var(--bg-color)] content-[''];
+  }
+
+  .bg-before-blur {
+    --blur-value: theme("backdropBlur.xl");
+    @apply bg-with-before overflow-hidden;
+  }
+
+  .bg-before-blur::before {
+    @apply backdrop-blur-[var(--blur-value)];
+    /* transform: translateZ(0) skew(0.5deg); */
+  }
+
+  .bg-before-overlay {
+    --overlay-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .bg-before-overlay::before {
+    @apply absolute inset-0 -z-10 h-full w-full bg-gradient-to-b 
+    from-transparent to-[var(--overlay-color)] content-[''];
+  }
+
+  .skeleton-content1 {
+    @apply relative z-10 after:!bg-content1;
+  }
+
+  .skeleton-content2 {
+    @apply relative z-10 after:!bg-content2;
+  }
+
+  .skeleton-content3 {
+    @apply relative z-10 after:!bg-content3;
+  }
+}
