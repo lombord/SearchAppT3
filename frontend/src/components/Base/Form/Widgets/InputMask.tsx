@@ -123,7 +123,6 @@ const InputMask: FC<InputMaskProps> = ({
         key === "Delete",
         curA != curB,
       ];
-      console.log(key);
 
       const isDelChar = isBack || isDel;
 
